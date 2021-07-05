@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 // import javax.validation.constraints.Email;
 //import javax.validation.constraints.NotBlank;
 // import javax.validation.constraints.Size;
+import javax.validation.constraints.Size;
 
 import java.util.Collection;
 
@@ -25,18 +28,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
- 
-    @Column(name = "first_name",nullable = false)
+    @NotBlank
+    @Size(min=2, max=30)
     private String firstName;
 
-    
-    @Column(name = "last_name" ,nullable = false)
+    @NotBlank
+    @Size(min=2, max=30)
     private String lastName;
 
-   
-    @Column(name = "email", nullable = false)
+    @Email
+    @NotBlank
     private String email;
 
+    
+   
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -8,7 +8,14 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           rel="stylesheet">
+
+    <style>
+        body {
+        background-color: #a3c2c2;
+        }
+    </style>
 </head>
+
 <body>
 
 <!-- create navigation bar ( header) -->
@@ -39,29 +46,33 @@
 
             <h1>Registration</h1>
 
-            <form th:action="@{/registration}" method="post" th:object="${user}">
+            <form th:action="@{/registration}" method="post" th:object="${user}" novalidate>
                 <div class="form-group">
                     <label class="control-label" for="firstName"> First Name </label>
                     <input id="firstName" class="form-control" th:field="*{firstName}"
                            required autofocus="autofocus" />
+                    <p style="color:red;" th:if="${#fields.hasErrors('firstName')}" th:errorclass="is-invalid" th:errors="*{firstName}"></p>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="lastName"> Last Name </label> <input
-                        id="lastName" class="form-control" th:field="*{lastName}"
+                    <label class="control-label" for="lastName"> Last Name </label> 
+                    <input id="lastName" class="form-control" th:field="*{lastName}"
                         required autofocus="autofocus" />
+                    <p style="color:red;" th:if="${#fields.hasErrors('lastName')}" th:errorclass="is-invalid" th:errors="*{lastName}"></p>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="email"> Email </label> <input
                         id="email" class="form-control" th:field="*{email}" required
                         autofocus="autofocus" />
+                    <p style="color:red;" th:if="${#fields.hasErrors('email')}" th:errorclass="is-invalid" th:errors="*{email}"></p>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="password"> Password </label> <input
                         id="password" class="form-control" type="password"
                         th:field="*{password}" required autofocus="autofocus" />
+                    <p style="color:red;" th:if="${#fields.hasErrors('password')}" th:errorclass="is-invalid" th:errors="*{password}"></p>
                 </div>
 
                 <div class="form-group">

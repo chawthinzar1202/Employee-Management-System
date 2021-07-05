@@ -9,7 +9,11 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           rel="stylesheet">
-   
+    <style>
+        body {
+        background-color: #a3c2c2;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,7 +42,7 @@
 
         <a class="btn btn-primary btn-sm mb-3" th:href="@{/showNewEmployeeForm}"> Add Employee </a>
 
-        <table border="1" class="table table-bordered table-striped" th:method="post">
+        <table border="1" class="table table-hover" th:method="post">
             <thead class="bg-info text-white text-center"> 
                 <tr>
                     <th style="text-align:center">Employee id</th>
@@ -84,7 +88,7 @@
             <h4>Total Rows: [[${totalItems}]]</h4>
             <ul class="pagination">
                 
-                <li class="page-item">
+                <li class="page-item active">
             
                 <a class="page-link" th:href="@{'/page/' + ${currentPage - 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
                     th:if="${currentPage <= totalPages}" aria-label="Previous">
@@ -94,7 +98,7 @@
                 
                 <span th:each="i: ${#numbers.sequence(1, totalPages)}">
                     <a th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
-                        th:if="${currentPage != i}">[[${i}]]</a>
+                        th:if="${currentPage != i}">[[${i}]]</a><span class="sr-only">(current)</span>
                     <span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
                 </span>
 

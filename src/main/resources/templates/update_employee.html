@@ -9,6 +9,12 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           rel="stylesheet">
+
+	<style>
+        body {
+        background-color: #a3c2c2;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -16,15 +22,15 @@
     <hr>
     <h2>Update Employee</h2>
 
-    <form th:action="@{/showFormForUpdate/{id}(id=${employee.id})}" th:object="${employee}" method="post" novalidate>
+    <form th:action="@{/showFormForUpdate/{id}(id=${employee.id})}" th:object="${employee}" method="post">
          
         <b>First Name:</b>
-		<input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name" required="required">
+		<input type="text" th:field="*{firstName}" class="form-control" required="required">
 		<b>Last Name:</b>
-		<input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" required="required">
+		<input type="text" th:field="*{lastName}" class="form-control" required="required">
 		<b>Gender:</b>
 		<select th:field="*{gender}" class="form-control" required="required">
-			<option value="-" selected="selected">-</option>
+			<option value="-" selected="selected">Choose Gender</option>
 			<option value="Mr">Mr</option>
 			<option value="Mrs">Mrs</option>
 		</select>
@@ -40,13 +46,13 @@
 			<option value="Sales">Sales</option>
 		</select>
 		<b>Email:</b>
-		<input type="text" th:field="*{email}" class="form-control" placeholder="Email" required="required">
+		<input type="text" th:field="*{email}" class="form-control" required="required">
 		<b>Phone:</b>
-		<input type="text" th:field="*{phone}" class="form-control" placeholder="Phone Number" required="required">
+		<input type="text" th:field="*{phone}" class="form-control" required="required">
 		<b>Date Of Birth:</b>
-		<input type="date" th:field="*{dateOfBirth}" class="form-control" placeholder="Date of Birth" required="required">
+		<input type="date" th:field="*{dateOfBirth}" class="form-control" required="required">
 		<b>Address:</b>
-		<input type="text" th:field="*{address}" class="form-control" placeholder="Address" required="required">
+		<input type="text" th:field="*{address}" class="form-control" required="required">
 		<br>
         <button type="submit" class="btn btn-info col-2"> Update Employee</button>
     </form>
